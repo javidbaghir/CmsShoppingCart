@@ -1,0 +1,73 @@
+<!doctype html>
+
+    <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+    <head th:replace="/fragments/head"></head>
+
+    <body>
+
+    <nav th:replace="/fragments/nav :: nav-admin"></nav>
+
+    <div class="container">
+        <h1 class="display-2">Products</h1>
+
+        <a href="/admin/products/add" class="btn btn-primary mb-5">Add new</a>
+
+        <div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
+
+        <div th:if="${!products.empty}">
+
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+
+                <tr th:each="product: ${products}">
+                    <td th:text="${product.name}"></td>
+                    <td th:text="${product.description}"></td>
+                    <td>
+                        <img style="width: 70px;" th:src="@{'/media/' + ${product.image}}">
+                    </td>
+                    <td th:text="${category[__${product.categoryId}__]}"></td>
+                    <td th:text="${product.price} + ' $'"></td>
+                    <td><a th:href="@{'/admin/products/edit/' + ${product.id}}">Edit</a> </td>
+                    <td><a th:href="@{'/admin/products/delete/' + ${product.id}}">Delete</a> </td>
+                </tr>
+            </table>
+        </div>
+
+        <nav class="mt-3" th:if="${count > pageSize}">
+
+            <ul class="pagination">
+                <li class="page-item" th:if="${currentPage > 0}">
+                    <a th:href="@{${#httpServletRequest.requestURI}} + '?page=__${currentPage-1}__'" class="page-link">Prev</a>
+                </li>
+
+                <li class="page-item" th:each="number: ${#numbers.sequence(0, pageCount-1)}" th:classappend="${currentPage==number} ? 'active' : ''">
+                    <a th:href="@{${#httpServletRequest.requestURI}} + '?page=__${number}__'" class="page-link" th:text="${number+1}"></a>
+                </li>
+
+                <li class="page-item" th:if="${currentPage < pageCount-1}">
+                    <a th:href="@{${#httpServletRequest.requestURI}} + '?page=__${currentPage+1}__'" class="page-link">Next</a>
+                </li>
+            </ul>
+        </nav>
+
+
+        <div th:unless="${!products.empty}">
+            <h4 class="display-4">There are No Products at the moment!</h4>
+        </div>
+
+        </div>
+
+        <div th:replace="/fragments/footer"></div>
+
+        </body>
+
+    </html>
