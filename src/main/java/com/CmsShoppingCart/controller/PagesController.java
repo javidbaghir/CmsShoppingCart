@@ -1,7 +1,6 @@
 package com.CmsShoppingCart.controller;
 
 import com.CmsShoppingCart.domain.Pages;
-import com.CmsShoppingCart.repository.PageRepository;
 import com.CmsShoppingCart.service.PageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

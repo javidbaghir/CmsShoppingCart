@@ -3,8 +3,6 @@ package com.CmsShoppingCart;
 import com.CmsShoppingCart.domain.Cart;
 import com.CmsShoppingCart.domain.Category;
 import com.CmsShoppingCart.domain.Pages;
-import com.CmsShoppingCart.repository.CategoryRepository;
-import com.CmsShoppingCart.repository.PageRepository;
 import com.CmsShoppingCart.service.CategoryService;
 import com.CmsShoppingCart.service.PageService;
 import org.springframework.beans.factory.annotation.Autowired;

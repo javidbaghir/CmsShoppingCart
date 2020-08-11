@@ -9,8 +9,6 @@
 
     <div class="container">
 
-    <!--    <h1 th:text="'Edit ' + ${product.name}" class="display-2"></h1>-->
-
         <h1 class="display-2" th:text="'Edit ' + ( ${productName} ?: ${product.name} )"></h1>
 
         <a href="/admin/products" class="btn btn-primary mb-5">Back to products</a>

@@ -51,16 +51,13 @@ public class CategoriesController {
 
         if (slug.equals("all")) {
 
-//            Page<Product> products = productRepository.findAllByStatus(pageable, 1);
             Page<Product> products = productService.findAllByStatus(pageable, 1);
 
-//            count = productRepository.countByStatus(1);
             count = productService.countByStatus(1);
 
             model.addAttribute("products", products);
             model.addAttribute("count", count);
         } else {
-//            Category category = categoryRepository.findBySlugAndStatus(slug, 1);
             Category category = categoryService.findBySlugAndStatus(slug, 1);
 
             if (category == null) {
@@ -68,17 +65,14 @@ public class CategoriesController {
             }
             int categoryId = category.getId();
             String categoryName = category.getName();
-//            List<Product> products = productRepository.findAllByCategoryIdAndStatus(Integer.toString(categoryId), 1, pageable);
             List<Product> products = productService.findAllByCategoryIdAndStatus(Integer.toString(categoryId), 1, pageable);
 
-//            count = productRepository.countByCategoryIdAndStatus(Integer.toString(categoryId), 1);
             count = productService.countByCategoryIdAndStatus(Integer.toString(categoryId), 1);
 
             model.addAttribute("products", products);
             model.addAttribute("categoryName", categoryName);
         }
 
-//        double pageCount = Math.ceil((double)count / (double)pageSize);
         double pageCount =  productService.pageCount();
 
         model.addAttribute("pageCount", (int)pageCount);

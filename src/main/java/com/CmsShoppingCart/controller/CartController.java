@@ -2,7 +2,6 @@ package com.CmsShoppingCart.controller;
 
 import com.CmsShoppingCart.domain.Cart;
 import com.CmsShoppingCart.domain.Product;
-import com.CmsShoppingCart.repository.ProductRepository;
 import com.CmsShoppingCart.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

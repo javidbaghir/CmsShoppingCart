@@ -1,7 +1,6 @@
 package com.CmsShoppingCart.service.impl;
 
 import com.CmsShoppingCart.domain.Admin;
-import com.CmsShoppingCart.domain.User;
 import com.CmsShoppingCart.repository.AdminRepository;
 import com.CmsShoppingCart.service.AdminService;
 import com.CmsShoppingCart.service.PasswordService;
